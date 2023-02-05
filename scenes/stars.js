@@ -1,3 +1,5 @@
+const sceneBase = require('./base');
+
 class sceneStars extends sceneBase {
   maxSize = 4;
   
@@ -42,3 +44,5 @@ class sceneStars extends sceneBase {
     });
   }
 }
+
+module.exports = sceneStars;

@@ -15,3 +15,5 @@ class sceneBase {
   draw() {
   }
 }
+
+module.exports = sceneBase;

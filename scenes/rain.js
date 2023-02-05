@@ -1,3 +1,5 @@
+const sceneBase = require('./base');
+
 class sceneRain extends sceneBase {
   rains = [];
   trail = 7;
@@ -41,3 +43,5 @@ class sceneRain extends sceneBase {
     }
   }
 }
+
+module.exports = sceneRain;

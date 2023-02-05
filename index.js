@@ -1,45 +1,24 @@
-const canvasSketch = require('canvas-sketch');
-const {createCanvas} = require('canvas');
-const p5 = require('p5');
-const gl = require('gl');
+const p5 = require('node-p5');
+const { pixelsToLEDs } = require('./utils');
 
-// Optional preloader
-const preload = p5 => {
-  // Can p5.loadImage() here and so forth
-};
+const sceneInvaders = require('./scenes/invaders');
+const sceneRain = require('./scenes/invaders');
+const sceneStars = require('./scenes/invaders');
 
-// Create a new 'node-canvas' interface
-const canvas = createCanvas();
+function sketch(p) {
+  const scenes = [];
+  p.setup = () => {
+      p.createCanvas(32, 32);
+  }
 
-const settings = {
-  // Pass in the Cairo-backed canvas
-  canvas,
-  animate: true,
-  p5: { p5, preload },
-  // Optionally set dimensions / units / etc
-  // ...
-};
+  p.draw = () => {
+      p.background(0);
+      p.fill(255);
+      p.rect(8, 8, 16, 16);
+      p.loadPixels();
+      const leds = pixelsToLEDs(p.pixels);
+      console.log(leds.length, 32*32);
+  }
+}
 
-const sketch = () => {
-  return ({ p5, time, width, height }) => {
-    // Draw with p5.js things
-    p5.background(0);
-    p5.fill(255);
-    p5.noStroke();
-
-    const anim = p5.sin(time - p5.PI / 2) * 0.5 + 0.5;
-    p5.rect(0, 0, width * anim, height);
-  };
-};
-
-canvasSketch(sketch, settings)
-  .then(() => {
-    // Once sketch is loaded & rendered, stream a PNG with node-canvas
-    const out = fs.createWriteStream('output.png');
-    const stream = canvas.createPNGStream();
-    stream.pipe(out);
-    out.on('finish', () => console.log('Done rendering'));
-  });
-
-
-
+let p5Instance = p5.createSketch(sketch);

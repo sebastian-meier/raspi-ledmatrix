@@ -1,3 +1,5 @@
+const sceneBase = require('./base');
+
 class sceneInvaders extends sceneBase {
   images = [
     [
@@ -141,3 +143,5 @@ class sceneInvaders extends sceneBase {
     }
   }
 }
+
+module.exports = sceneInvaders;
