@@ -4,7 +4,8 @@
   "description": "A 32x32 RGB LED matrix display controlled from a raspberry pi",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "browser": "browserify browser.js -o bundle.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,9 @@
     "gl": "^6.0.2",
     "node-p5": "^1.0.4",
     "p5": "^1.5.0"
-  },  
-  "homepage": "https://github.com/sebastian-meier/raspi-ledmatrix#readme"
+  },
+  "homepage": "https://github.com/sebastian-meier/raspi-ledmatrix#readme",
+  "devDependencies": {
+    "browserify": "^17.0.0"
+  }
 }

@@ -8,7 +8,7 @@ let sketch = function(p) {
   p.setup = function() {
     p.createCanvas(canvasWidth, canvasHeight);
     p.pixelDensity(1);
-    scenes.push(new sceneInvaders(canvasWidth, canvasWidth, p));
+    scenes.push(new sceneLines(canvasWidth, canvasWidth, p));
 
     scenes[0].setup();
   };

@@ -4,6 +4,7 @@ const { pixelsToLEDs } = require('./utils');
 const sceneInvaders = require('./scenes/invaders');
 const sceneRain = require('./scenes/invaders');
 const sceneStars = require('./scenes/invaders');
+const sceneLines = require('./scenes/lines');
 
 function sketch(p) {
   const scenes = [];
