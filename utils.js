@@ -39,10 +39,10 @@ const pixelsToLEDs = (p) => {
       }
     } else {
       if (y < rY/2) {
-        mId = 3;
+        mId = 2;
         xOff = 16;
       } else {
-        mId = 2;
+        mId = 3;
         xOff = 16;
         yOff = 16;
       }
@@ -58,9 +58,9 @@ const pixelsToLEDs = (p) => {
 
     matrices[mId][oId] = fromRGBto32(
       [
-        p[l],
-        p[l + 1],
-        p[l + 2]
+        p[l] > 0 ? Math.max(30, p[l]) : 0,
+        p[l + 1] > 0 ? Math.max(30, p[l + 1]) : 0,
+        p[l + 2] > 0 ? Math.max(30, p[l + 2]) : 0
       ]
     );
   }
