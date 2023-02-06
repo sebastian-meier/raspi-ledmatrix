@@ -1,7 +1,7 @@
 const fromRGBto32 = (rgbArr) => {
-  return rgbArr.reduce((s, v) => {
+  return eval('0x' + rgbArr.reduce((s, v) => {
     return s + ('0' + v.toString(16)).slice(-2);
-  },'') + 'ff';
+  },''));
 };
 
 const pixelsToLEDs = (p) => {
@@ -11,40 +11,60 @@ const pixelsToLEDs = (p) => {
 
   /*
    Display setup:
-   1|3
+   0|2
    ---
-   2|4
+   1|3
    */
-  const matrices = [[],[],[],[]];
+  const matrices = [
+    new Array(16*16),
+    new Array(16*16),
+    new Array(16*16),
+    new Array(16*16)
+  ];
+
   for (let l = 0; l < p.length; l += 4) {
     const id = l / 4;
     const y = Math.floor(id / rX);
     const x = id - y * rX;
-
+    
+    let xOff = 0;
+    let yOff = 0;
     let mId;
     if (x < rX/2) {
       if (y < rY/2) {
         mId = 0;
       } else {
         mId = 1;
+        yOff = 16;
       }
     } else {
       if (y < rY/2) {
         mId = 2;
+        xOff = 16;
       } else {
         mId = 3;
+        xOff = 16;
+        yOff = 16;
       }
     }
     
-    matrices[mId].push(fromRGBto32(
+    const oX = x - xOff;
+    const oY = y - yOff;
+    let oId = oX * 16 + oY;
+
+    if (oX%2 !== 0) {
+      oId = oX * 16 - 1 + (16 - oY);
+    }
+
+    matrices[mId][oId] = fromRGBto32(
       [
         p[l],
         p[l + 1],
         p[l + 2]
       ]
-    ));
+    );
   }
-
+  
   return matrices.flat();
 };
 
