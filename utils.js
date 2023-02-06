@@ -39,10 +39,10 @@ const pixelsToLEDs = (p) => {
       }
     } else {
       if (y < rY/2) {
-        mId = 2;
+        mId = 3;
         xOff = 16;
       } else {
-        mId = 3;
+        mId = 2;
         xOff = 16;
         yOff = 16;
       }

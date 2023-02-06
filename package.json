@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "canvas": "^2.11.0",
+    "pureimage": "^0.3.15",
     "rpi-ws281x-native": "^1.0.4"
   },
   "homepage": "https://github.com/sebastian-meier/raspi-ledmatrix#readme",
