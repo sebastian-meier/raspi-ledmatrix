@@ -1,0 +1,21 @@
+{
+  "name": "i2c",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sebastian-meier",
+  "license": "MIT",
+  "dependencies": {
+    "coffee-script": "^1.12.7",
+    "gpio": "^0.2.10",
+    "i2c": "^0.2.5",
+    "i2c-bus": "^5.2.2",
+    "oled-font-5x7": "^1.0.3",
+    "oled-i2c-bus": "^1.0.12",
+    "pigpio": "^3.3.1",
+    "wiring-pi": "^2.2.1"
+  }
+}

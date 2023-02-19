@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "node-p5": "^1.0.4",
+    "rpi-ws281x-native": "^1.0.4"
+  }
+}
