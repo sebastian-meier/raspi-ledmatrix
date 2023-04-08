@@ -23,14 +23,15 @@ class sceneRain extends sceneBase {
   draw() {
     this.addRains();
 
-    this.p.noStroke();
+    this.p.strokeStyle = "transparent";
   
     const deletions = [];
 
     this.rains.forEach((r,ri) => {
       for (let y = 0; (r.y - y) >= 0 && y <= this.trail; y += 1) {
-        this.p.fill(255, 255/this.trail*(this.trail-y));
-        this.p.rect(r.x, r.y - y, 1, 1);
+        const rgb = 255/this.trail*(this.trail-y);
+        this.p.fillStyle =`rgb(${rgb}, ${rgb}, ${rgb})`;
+        this.p.fillRect(r.x, r.y - y, 1, 1);
       }
       r.y += r.v;
       if (r.y - this.trail > this.canvasHeight) {

@@ -24,14 +24,14 @@ process.on('uncaughtException', exitHandler.bind(null, {exit:true}));
 const channel = ws281x(16 * 16 * 4, { stripType: 'ws2812', brightness: 10 });
 
 // const sceneInvaders = require('./scenes/invaders');
-// const sceneRain = require('./scenes/rain');
+const sceneRain = require('./scenes/rain');
 // const sceneStars = require('./scenes/stars');
 const sceneLines = require('./scenes/lines');
 
 const canvas = PImage.make(32, 32);
 const ctx = canvas.getContext('2d');
 
-const lines = new sceneLines(32,32,ctx);
+const lines = new sceneRain(32,32,ctx);
 lines.setup();
 
 let data;
