@@ -10,3 +10,8 @@ i2c communication require sudo rights (even with raspi-config i2c enabled)
 ```
 sudo "$(which node)" index.js
 ```
+
+find raspi ip:
+sudo nmap -sn 192.168.178.1/24
+
+ssh pi@PI_IP

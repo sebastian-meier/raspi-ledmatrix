@@ -31,7 +31,7 @@ function sketch(p) {
     
     console.log('loop');
   
-    // ws281x.render();
+    ws281x.render();
     // p.noLoop();
   }
 }
