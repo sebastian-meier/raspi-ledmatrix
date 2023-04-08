@@ -33,7 +33,10 @@ class sceneStars extends sceneBase {
     this.p.strokeStyle = "transparent";
   
     this.stars.forEach((s,si) => {
+      this.p.beginPath();
       this.p.arc(s.x, s.y, s.s, 0, Math.PI * 2);
+      this.p.closePath();
+      this.p.fill();
       s.s += s.sd ? s.ss : -s.ss;
       if (s.s > s.sm) {
         s.sd = false;
