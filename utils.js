@@ -11,9 +11,9 @@ const pixelsToLEDs = (p) => {
 
   /*
    Display setup:
-   0|2
+   1|0
    ---
-   1|3
+   2|3
    */
   const matrices = [
     new Array(16*16),
@@ -32,14 +32,14 @@ const pixelsToLEDs = (p) => {
     let mId;
     if (x < rX/2) {
       if (y < rY/2) {
-        mId = 0;
-      } else {
         mId = 1;
+      } else {
+        mId = 2;
         yOff = 16;
       }
     } else {
       if (y < rY/2) {
-        mId = 2;
+        mId = 0;
         xOff = 16;
       } else {
         mId = 3;
