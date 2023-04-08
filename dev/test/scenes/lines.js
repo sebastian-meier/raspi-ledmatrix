@@ -11,6 +11,7 @@ class sceneLines extends sceneBase {
   }
   
   draw() {
+    this.p.fillStyle = "rgb(255,0,0)";
     this.p.strokeStyle = '#ffffff';
     this.p.lineWidth = 2;
 
