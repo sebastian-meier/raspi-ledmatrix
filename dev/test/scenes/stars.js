@@ -6,7 +6,6 @@ class sceneStars extends sceneBase {
   maxStars = 12;
   
   setup = () => {
-    console.log(this.stars);
     this.addStars(this.maxStars);
   };
   
@@ -29,7 +28,7 @@ class sceneStars extends sceneBase {
   }
   
   draw() {
-    this.p.fillStyle = "#ffffff";
+    this.p.fillStyle = "rgb(100, 100, 100)";
     this.p.strokeStyle = "transparent";
   
     this.stars.forEach((s,si) => {
