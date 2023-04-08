@@ -2,12 +2,11 @@ const sceneBase = require('./base');
 
 class sceneStars extends sceneBase {
   maxSize = 4;
-  
   stars = [];
   maxStars = 12;
   
   setup = () => {
-    this.stars = [];
+    console.log(this.stars);
     this.addStars(this.maxStars);
   };
   
