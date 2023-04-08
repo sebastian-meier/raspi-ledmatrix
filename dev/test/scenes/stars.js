@@ -7,6 +7,7 @@ class sceneStars extends sceneBase {
   maxStars = 12;
   
   setup = () => {
+    this.stars = [];
     this.addStars(this.maxStars);
   };
   
