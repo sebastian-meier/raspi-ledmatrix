@@ -41,17 +41,6 @@ function update() {
   ctx.fillStyle = '#000000';
   ctx.fillRect(0, 0, 32, 32);
 
-  ctx.fillStyle = 'rgb(50,50,50)';
-  ctx.fillRect(1,0,1,1);
-  ctx.fillStyle = 'rgb(40,40,40)';
-  ctx.fillRect(2,0,1,1);
-  ctx.fillStyle = 'rgb(30,30,30)';
-  ctx.fillRect(3,0,1,1);
-  ctx.fillStyle = 'rgb(20,20,20)';
-  ctx.fillRect(4,0,1,1);
-  ctx.fillStyle = 'rgb(10,10,10)';
-  ctx.fillRect(5,0,1,1);
-
   lines.draw();
 
   data = ctx.getImageData(0, 0, 32, 32);
@@ -64,7 +53,6 @@ function update() {
   }
   
   delete leds;
-  
   
   ws281x.render();
   setImmediate(update);
