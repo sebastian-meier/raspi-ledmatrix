@@ -4,22 +4,25 @@ from PIL import Image, ImageDraw, ImageColor
 import math
 import random
   
-img = Image.new('RGB', (32, 32), color = 'black')
+img = Image.new('RGB', (32 * 4, 32 * 4), color = 'black')
+im  = Image.new("RGB", (32, 32), (0, 0, 0))
 draw = ImageDraw.Draw(img)
 
 pixels = neopixel.NeoPixel(board.D18, 16*16*4, auto_write=False, brightness=1.0)
 
 for a in range(360):
   print(a)
-  draw.rectangle((0,0,32,32), (0,0,0))
+  draw.rectangle((0,0,32 * 4, 32 * 4), (0,0,0))
 
   rad = math.pi / 180.0 * a
-  sx = 16.0 * math.cos(rad)
-  sy = 16.0 * math.sin(rad)
+  sx = 16.0 * 4 * math.cos(rad)
+  sy = 16.0 * 4 * math.sin(rad)
 
-  draw.line((16, 16, sx + 16, sy + 16), fill=(255,255,255))
+  draw.line((16 * 4, 16 * 4, sx + 16 * 4, sy + 16 * 4), fill=(255,255,255))
 
-  px = img.load()
+  im = img.resize((32,32), Image.ANTIALIAS)
+
+  px = im.load()
 
   rX = 32
   rY = 32
