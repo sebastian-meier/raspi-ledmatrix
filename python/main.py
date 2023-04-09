@@ -24,8 +24,6 @@ for a in range(360):
   rX = 32
   rY = 32
 
-  colors = [None] * 16*16*4
-
   # Display setup:
   # 1|0
   # ---
@@ -63,7 +61,6 @@ for a in range(360):
 
       oId += mId * 16 * 16
 
-      colors[oId] = px[x, y]
+      pixels[oId] = px[x, y]
 
-  pixels = colors
-  pixels.show()
+  # pixels.show()
