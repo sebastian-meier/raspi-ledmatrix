@@ -11,7 +11,7 @@ pixels = neopixel.NeoPixel(board.D18, 16*16*4, auto_write=False)
 
 for a in range(360):
   print(a)
-  draw.rectangle((0,0,32,32), (round(random.random() * 255), round(random.random() * 255), round(random.random() * 255)))
+  draw.rectangle((0,0,32,32), (0,0,0))
 
   rad = math.pi / 180.0 * a
   sx = 16.0 * math.cos(rad)
