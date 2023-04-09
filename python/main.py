@@ -8,7 +8,7 @@ img = Image.new('RGB', (32 * 4, 32 * 4), color = 'black')
 im  = Image.new("RGB", (32, 32), (0, 0, 0))
 draw = ImageDraw.Draw(img)
 
-pixels = neopixel.NeoPixel(board.D18, 16*16*4, auto_write=False, brightness=1.0)
+pixels = neopixel.NeoPixel(board.D18, 16*16*4, auto_write=False, brightness=0.2)
 
 for a in range(360):
   draw.rectangle((0,0,32 * 4, 32 * 4), (0,0,0))
