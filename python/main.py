@@ -36,7 +36,7 @@ for a in range(360):
       yOff = 0
       mId = None
 
-      """if x < rX/2: 
+      if x < rX/2: 
         if y < rY/2:
           mId = 1
         else:
@@ -61,6 +61,6 @@ for a in range(360):
 
       oId += mId * 16 * 16
 
-      pixels[oId] = px[x, y]"""
+      """pixels[oId] = px[x, y]"""
 
   pixels.show()
