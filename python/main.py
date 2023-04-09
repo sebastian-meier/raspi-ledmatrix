@@ -7,17 +7,19 @@ import random
 img = Image.new('RGB', (32, 32), color = 'black')
 draw = ImageDraw.Draw(img)
 
-pixels = neopixel.NeoPixel(board.D18, 16*16*4, auto_write=False)
+pixels = neopixel.NeoPixel(board.D18, 16*16*4, auto_write=False, brightness=1.0)
 
 for a in range(360):
   print(a)
   draw.rectangle((0,0,32,32), (0,0,0))
 
+  draw.rectangle((8,8,24,24), (255,0,0))
+
   rad = math.pi / 180.0 * a
   sx = 16.0 * math.cos(rad)
   sy = 16.0 * math.sin(rad)
 
-  draw.line((16, 16, sx, sy), fill=128)
+  # draw.line((16, 16, sx, sy), fill=128)
 
   px = img.load()
 
