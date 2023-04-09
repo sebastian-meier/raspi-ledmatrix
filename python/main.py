@@ -61,6 +61,6 @@ for a in range(360):
 
       oId += mId * 16 * 16
 
-      """pixels[oId] = px[x, y]"""
+      pixels[oId] = px[x, y]
 
   pixels.show()
