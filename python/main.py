@@ -7,7 +7,7 @@ import random
 img = Image.new('RGB', (32, 32), color = 'black')
 draw = ImageDraw.Draw(img)
 
-pixels = neopixel.NeoPixel(board.D18, 16*16*4)
+pixels = neopixel.NeoPixel(board.D18, 16*16*4, auto_write=False)
 
 for a in range(360):
   print(a)
@@ -63,4 +63,4 @@ for a in range(360):
 
       pixels[oId] = px[x, y]
 
-  # pixels.show()
+  pixels.show()
