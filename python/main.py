@@ -8,7 +8,8 @@ draw = ImageDraw.Draw(img)
 
 pixels = neopixel.NeoPixel(board.D18, 16*16*4)
 
-for a in range(0, 360):
+for a in range(360):
+  print(a)
   a = 45-0
   draw.rectangle((0,0,32,32), (0,0,0))
 
