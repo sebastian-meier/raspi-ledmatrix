@@ -2,6 +2,7 @@ import board
 import neopixel
 from PIL import Image, ImageDraw, ImageColor
 import math
+import random
   
 img = Image.new('RGB', (32, 32), color = 'black')
 draw = ImageDraw.Draw(img)
@@ -10,7 +11,7 @@ pixels = neopixel.NeoPixel(board.D18, 16*16*4)
 
 for a in range(360):
   print(a)
-  draw.rectangle((0,0,32,32), (0,0,0))
+  draw.rectangle((0,0,32,32), (random() * 255.0, random() * 255.0, random() * 255.0))
 
   rad = math.pi / 180.0 * a
   sx = 16.0 * math.cos(rad)
@@ -19,7 +20,6 @@ for a in range(360):
   draw.line((16, 16, sx, sy), fill=128)
 
   px = img.load()
-  px[4, 4]
 
   rX = 32
   rY = 32
@@ -29,14 +29,7 @@ for a in range(360):
   # ---
   # 2|3
 
-  matrices = [
-    [0] * 16 * 16,
-    [0] * 16 * 16,
-    [0] * 16 * 16,
-    [0] * 16 * 16
-  ]
-
-  for x in range(32):
+  """for x in range(32):
     for y in range(32):
 
       xOff = 0
@@ -68,6 +61,6 @@ for a in range(360):
 
       oId += mId * 16 * 16
 
-      pixels[oId] = px[x, y]
+      pixels[oId] = px[x, y]"""
 
   pixels.show()
