@@ -27,9 +27,9 @@ for a in range(360):
   rY = 32
 
   # Display setup:
-  # 1|0
+  # 0|1
   # ---
-  # 2|3
+  # 3|2
 
   for x in range(32):
     for y in range(32):
@@ -40,16 +40,16 @@ for a in range(360):
 
       if x < rX/2: 
         if y < rY/2:
-          mId = 1
+          mId = 0
         else:
-          mId = 2
+          mId = 3
           yOff = 16
       else:
         if y < rY/2:
-          mId = 0
+          mId = 1
           xOff = 16
         else:
-          mId = 3
+          mId = 2
           xOff = 16
           yOff = 16
     
