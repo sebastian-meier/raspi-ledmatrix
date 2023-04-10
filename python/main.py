@@ -2,13 +2,22 @@ import board
 import neopixel
 from PIL import Image, ImageDraw, ImageColor
 import math
+import adafruit_pixelbuf
 # import random
-  
+
+class TestBuf(adafruit_pixelbuf.PixelBuf):
+    called = False
+
+    def show(self):
+        self.called = True
+
+pixels = TestBuf(16*16*4, bytearray(16*16*4 * 3), "RGB", 1.0, auto_write=False)
+
 img = Image.new('RGB', (32 * 4, 32 * 4), color = 'black')
 im  = Image.new("RGB", (32, 32), (0, 0, 0))
 draw = ImageDraw.Draw(img)
 
-pixels = neopixel.NeoPixel(board.D18, 16*16*4, auto_write=False, brightness=1.0)
+# pixels = neopixel.NeoPixel(board.D18, 16*16*4, auto_write=False, brightness=1.0)
 
 cache = [(0,0,0)] * 16 * 16 * 4
 
