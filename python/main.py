@@ -97,7 +97,6 @@ for a in range(360):
 
   elapsed_time = time.monotonic() - start_time
   print(int(elapsed_time*1000))
-  print(changes)
 
   # pixels_np = np.clip(pixels_np, 0, 255)
 
