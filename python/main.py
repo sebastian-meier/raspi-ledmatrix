@@ -2,13 +2,15 @@ import board
 import neopixel
 from PIL import Image, ImageDraw, ImageColor
 import math
-import random
+# import random
   
 img = Image.new('RGB', (32 * 4, 32 * 4), color = 'black')
 im  = Image.new("RGB", (32, 32), (0, 0, 0))
 draw = ImageDraw.Draw(img)
 
-pixels = neopixel.NeoPixel(board.D18, 16*16*4, auto_write=False, brightness=0.2)
+pixels = neopixel.NeoPixel(board.D18, 16*16*4, auto_write=False, brightness=1.0)
+
+cache = [(0,0,0)] * 16 * 16 * 4
 
 for a in range(360):
   draw.rectangle((0,0,32 * 4, 32 * 4), (0,0,0))
@@ -64,6 +66,10 @@ for a in range(360):
 
       oId += mId * 16 * 16
 
-      pixels[oId] = px[x, y]
+      tColor = px[x, y]
+
+      if tColor != cache[oId]:
+        cache[oId] = tColor
+        pixels[oId] = tColor
 
   pixels.show()

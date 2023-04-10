@@ -1,0 +1,1 @@
+only switch LEDs that actually change
