@@ -5,18 +5,9 @@ import math
 import adafruit_pixelbuf
 # import random
 
-class TestBuf(adafruit_pixelbuf.PixelBuf):
-    called = False
+numLeds = 16*16*4
 
-    @property
-    def n(self):
-        return len(self)
-
-    def _transmit(self, buffer):  # pylint: disable=unused-argument
-        self.called = True
-
-
-pixels = adafruit_pixelbuf.PixelBuf(16*16*4, "RGB", brightness=1.0, auto_write=False)
+pixels = adafruit_pixelbuf.PixelBuf(numLeds, "RGB")
 
 img = Image.new('RGB', (32 * 4, 32 * 4), color = 'black')
 im  = Image.new("RGB", (32, 32), (0, 0, 0))
@@ -24,10 +15,10 @@ draw = ImageDraw.Draw(img)
 
 # pixels = neopixel.NeoPixel(board.D18, 16*16*4, auto_write=False, brightness=1.0)
 
-cache = [(0,0,0)] * 16 * 16 * 4
+cache = [(0, 0, 0)] * numLeds
 
 for a in range(360):
-  draw.rectangle((0,0,32 * 4, 32 * 4), (0,0,0))
+  draw.rectangle((0, 0, 32 * 4, 32 * 4), (0, 0, 0))
   # draw.rectangle((8*4,8*4,24*4,24*4), (0,255,0))
 
   rad = math.pi / 180.0 * a
