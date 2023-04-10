@@ -1,7 +1,7 @@
 import board
 import neopixel
 from PIL import Image, ImageDraw, ImageColor
-import math
+import math, time
 import atexit
 import numpy as np
 # import adafruit_pixelbuf
@@ -54,6 +54,7 @@ for a in range(360):
   # 3|2
 
   changes = 0
+  start_time = time.monotonic()
 
   for x in range(32):
     for y in range(32):
@@ -91,11 +92,14 @@ for a in range(360):
 
       if tColor != cache[oId]:
         cache[oId] = tColor
-        pixels_np[oId] = tColor
+        pixels[oId] = tColor
         changes += 1
 
+  elapsed_time = time.monotonic() - start_time
+  print(int(elapsed_time*1000))
   print(changes)
-  pixels_np = np.clip(pixels_np, 0, 255)
 
-  pixels[:] = pixels_np.tolist()
+  # pixels_np = np.clip(pixels_np, 0, 255)
+
+  # pixels[:] = pixels_np.tolist()
   pixels.show()
