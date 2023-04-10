@@ -3,7 +3,7 @@ import neopixel
 from PIL import Image, ImageDraw, ImageColor
 import math
 import atexit
-from ulab import numpy as np
+import numpy as np
 # import adafruit_pixelbuf
 # import random
 
