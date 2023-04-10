@@ -7,7 +7,13 @@ import adafruit_pixelbuf
 
 numLeds = 16*16*4
 
-pixels = adafruit_pixelbuf.PixelBuf(numLeds, byteorder="RGB")
+class TestBuf(adafruit_pixelbuf.PixelBuf):
+    called = False
+
+    def show(self):
+        self.called = True
+
+pixels = TestBuf(numLeds, byteorder="RGB")
 
 img = Image.new('RGB', (32 * 4, 32 * 4), color = 'black')
 im  = Image.new("RGB", (32, 32), (0, 0, 0))
