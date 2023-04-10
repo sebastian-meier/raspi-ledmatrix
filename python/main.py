@@ -101,9 +101,12 @@ for a in range(360):
   elapsed_time = time.monotonic() - start_time
   print(int(elapsed_time*1000))
 
-  print("---")
-
   # pixels_np = np.clip(pixels_np, 0, 255)
 
   # pixels[:] = pixels_np.tolist()
   pixels.show()
+
+  elapsed_time = time.monotonic() - start_time
+  print(int(elapsed_time*1000))
+
+  print("---")
