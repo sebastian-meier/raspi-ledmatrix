@@ -3,33 +3,22 @@ import neopixel
 from PIL import Image, ImageDraw, ImageColor
 import math, time
 import atexit
-import numpy as np
-# import adafruit_pixelbuf
-# import random
+# import numpy as np
 
 numLeds = 16*16*4
-
-"""class TestBuf(adafruit_pixelbuf.PixelBuf):
-    called = False
-
-    def show(self):
-        self.called = True
-
-pixels = TestBuf(numLeds, byteorder="RGB")"""
 
 img = Image.new('RGB', (32 * 4, 32 * 4), color = 'black')
 im  = Image.new("RGB", (32, 32), (0, 0, 0))
 draw = ImageDraw.Draw(img)
 
 pixels = neopixel.NeoPixel(board.D18, numLeds, auto_write=False, brightness=1.0)
-pixels_np = np.array(pixels, dtype=np.int16)
+# pixels_np = np.array(pixels, dtype=np.int16)
 
 def sayGoodbye():
   pixels.deinit()
 atexit.register(sayGoodbye)
 
 cache = [(0, 0, 0)] * numLeds
-
 
 for a in range(360):
   start_time = time.monotonic()
@@ -56,9 +45,6 @@ for a in range(360):
 
   changes = 0
   
-  elapsed_time = time.monotonic() - start_time
-  print(int(elapsed_time*1000))
-
   for x in range(32):
     for y in range(32):
 
@@ -100,8 +86,6 @@ for a in range(360):
 
   elapsed_time = time.monotonic() - start_time
   print(int(elapsed_time*1000))
-
-  # pixels_np = np.clip(pixels_np, 0, 255)
 
   # pixels[:] = pixels_np.tolist()
   pixels.show()
