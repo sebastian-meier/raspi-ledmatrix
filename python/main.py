@@ -8,10 +8,15 @@ import adafruit_pixelbuf
 class TestBuf(adafruit_pixelbuf.PixelBuf):
     called = False
 
-    def show(self):
+    @property
+    def n(self):
+        return len(self)
+
+    def _transmit(self, buffer):  # pylint: disable=unused-argument
         self.called = True
 
-pixels = TestBuf(16*16*4, bytearray(16*16*4 * 3), "RGB", 1.0, auto_write=False)
+
+pixels = TestBuf(16*16*4, "RGB", brightness=1.0, auto_write=False)
 
 img = Image.new('RGB', (32 * 4, 32 * 4), color = 'black')
 im  = Image.new("RGB", (32, 32), (0, 0, 0))
