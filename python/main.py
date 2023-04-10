@@ -53,6 +53,8 @@ for a in range(360):
   # ---
   # 3|2
 
+  changes = 0
+
   for x in range(32):
     for y in range(32):
 
@@ -90,7 +92,9 @@ for a in range(360):
       if tColor != cache[oId]:
         cache[oId] = tColor
         pixels_np[oId] = tColor
+        changes += 1
 
+  print(changes)
   pixels_np = np.clip(pixels_np, 0, 255)
 
   pixels[:] = pixels_np.tolist()
