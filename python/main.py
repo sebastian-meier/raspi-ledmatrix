@@ -32,6 +32,7 @@ cache = [(0, 0, 0)] * numLeds
 
 
 for a in range(360):
+  start_time = time.monotonic()
   draw.rectangle((0, 0, 32 * 4, 32 * 4), (0, 0, 0))
   # draw.rectangle((8*4,8*4,24*4,24*4), (0,255,0))
 
@@ -54,7 +55,9 @@ for a in range(360):
   # 3|2
 
   changes = 0
-  start_time = time.monotonic()
+  
+  elapsed_time = time.monotonic() - start_time
+  print(int(elapsed_time*1000))
 
   for x in range(32):
     for y in range(32):
@@ -97,6 +100,8 @@ for a in range(360):
 
   elapsed_time = time.monotonic() - start_time
   print(int(elapsed_time*1000))
+
+  print("---")
 
   # pixels_np = np.clip(pixels_np, 0, 255)
 
