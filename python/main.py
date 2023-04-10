@@ -3,7 +3,6 @@ import neopixel
 from PIL import Image, ImageDraw, ImageColor
 import math, time
 import atexit
-# import numpy as np
 
 numLeds = 16*16*4
 
@@ -12,7 +11,6 @@ im  = Image.new("RGB", (32, 32), (0, 0, 0))
 draw = ImageDraw.Draw(img)
 
 pixels = neopixel.NeoPixel(board.D18, numLeds, auto_write=False, brightness=1.0)
-# pixels_np = np.array(pixels, dtype=np.int16)
 
 def sayGoodbye():
   pixels.deinit()
@@ -21,7 +19,6 @@ atexit.register(sayGoodbye)
 cache = [(0, 0, 0)] * numLeds
 
 for a in range(360):
-  start_time = time.monotonic()
   draw.rectangle((0, 0, 32 * 4, 32 * 4), (0, 0, 0))
   # draw.rectangle((8*4,8*4,24*4,24*4), (0,255,0))
 
@@ -84,13 +81,4 @@ for a in range(360):
         pixels[oId] = tColor
         changes += 1
 
-  elapsed_time = time.monotonic() - start_time
-  print(int(elapsed_time*1000))
-
-  # pixels[:] = pixels_np.tolist()
   pixels.show()
-
-  elapsed_time = time.monotonic() - start_time
-  print(int(elapsed_time*1000))
-
-  print("---")
