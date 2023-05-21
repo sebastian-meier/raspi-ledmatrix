@@ -41,20 +41,28 @@ function update() {
   ctx.fillStyle = '#000000';
   ctx.fillRect(0, 0, 32, 32);
 
+  let start = (new Date()).getMilliseconds();
   lines.draw();
+  console.log((new Date()).getMilliseconds() - start, "draw");
 
+  start = (new Date()).getMilliseconds();
   data = ctx.getImageData(0, 0, 32, 32);
+  console.log((new Date()).getMilliseconds() - start, "getimagedata");
+  start = (new Date()).getMilliseconds();
   let leds = pixelsToLEDs(data.data);
+  console.log((new Date()).getMilliseconds() - start, "pixelstoleds");
   
-  delete data;
-  
+  start = (new Date()).getMilliseconds();
   for (let a = 0; a < channel.array.length && a < leds.length; a++) {
-     channel.array[a] = leds[a];
+    if (channel.array[a] != leds[a]) {
+        channel.array[a] = leds[a];
+    }
   }
+  console.log((new Date()).getMilliseconds() - start, "transfer");
   
-  delete leds;
-  
+  start = (new Date()).getMilliseconds();
   ws281x.render();
+  console.log((new Date()).getMilliseconds() - start, "render");
   setImmediate(update);
 }
 
