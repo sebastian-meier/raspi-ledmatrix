@@ -29,14 +29,25 @@ setInterval(() => {
 const Gpio = require("pigpio").Gpio;
 //26, 19
 // 
-const button = new Gpio(26, {
-	mode: Gpio.INPUT,
-	pullUpDown: Gpio.PUD_UP,
-	alert: true
+
+const buttons = [];
+const ids = [17,27,5,6];
+const callbacks = [
+	(level, tick) => { console.log("1",level,tick); },
+	(level, tick) => { console.log("2",level,tick); },
+	(level, tick) => { console.log("3",level,tick); },
+	(level, tick) => { console.log("4",level,tick); }
+];
+
+ids.forEach((id, i) => {
+	const button = new Gpio(id, {
+		mode: Gpio.INPUT,
+		pullUpDown: Gpio.PUD_UP,
+		alert: true
+	});
+	button.glitchFilter(10000);
+	button.on("alert", callbacks[i]);
+	buttons.push(button);
 });
 
-button.glitchFilter(10000);
 
-button.on("alert", (level, tick) => {
-	console.log(level, tick);
-});
