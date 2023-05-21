@@ -32,6 +32,12 @@ const Gpio = require("pigpio").Gpio;
 
 const buttons = [];
 const ids = [17,27,5,6];
+const labels = [
+	"play",
+	"right/forward",
+	"left/reverse",
+	"stop"
+];
 const callbacks = [
 	(level, tick) => { console.log("1",level,tick); },
 	(level, tick) => { console.log("2",level,tick); },
