@@ -16,6 +16,9 @@
   "bugs": {
     "url": "https://github.com/sebastian-meier/raspi-ledmatrix/issues"
   },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "dependencies": {
     "canvas": "^2.11.0",
     "i2c-bus": "^5.2.2",
