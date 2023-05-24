@@ -1,7 +1,5 @@
-const fromRGBto32 = (rgbArr) => {
-  return eval('0x' + rgbArr.reduce((s, v) => {
-    return s + ('0' + v.toString(16)).slice(-2);
-  },''));
+const fromRGBto32 = (r,g,b) => {
+  return (r << 16) + (g << 8) + b;
 };
 
 const pixelsToLEDs = (p) => {
@@ -11,9 +9,9 @@ const pixelsToLEDs = (p) => {
 
   /*
    Display setup:
-   1|0
+   0|1
    ---
-   2|3
+   3|2
    */
   const matrices = [
     new Array(16*16),
@@ -32,17 +30,17 @@ const pixelsToLEDs = (p) => {
     let mId;
     if (x < rX/2) {
       if (y < rY/2) {
-        mId = 1;
+        mId = 0;
       } else {
-        mId = 2;
+        mId = 3;
         yOff = 16;
       }
     } else {
       if (y < rY/2) {
-        mId = 0;
+        mId = 1;
         xOff = 16;
       } else {
-        mId = 3;
+        mId = 2;
         xOff = 16;
         yOff = 16;
       }
@@ -57,11 +55,11 @@ const pixelsToLEDs = (p) => {
     }
 
     matrices[mId][oId] = fromRGBto32(
-      [
+      
         p[l] > 0 ? Math.max(30, p[l]) : 0,
         p[l + 1] > 0 ? Math.max(30, p[l + 1]) : 0,
         p[l + 2] > 0 ? Math.max(30, p[l + 2]) : 0
-      ]
+
     );
   }
   

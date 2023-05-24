@@ -3,7 +3,7 @@ const sceneBase = require('./base');
 class sceneLines extends sceneBase {
   outset = 32;
   rotation = 0;
-  rotSpeed = Math.PI/180/2;
+  rotSpeed = Math.PI/180/1;
 
   spacing = 5;
 
@@ -11,6 +11,10 @@ class sceneLines extends sceneBase {
   }
   
   draw() {
+    this.p.fillStyle = "rgb(100,0,0)";
+    this.p.strokeStyle = "transparent";
+    this.p.fillRect(0, 0, 32, 32);
+
     this.p.strokeStyle = '#ffffff';
     this.p.lineWidth = 2;
 

@@ -2,7 +2,6 @@ const sceneBase = require('./base');
 
 class sceneStars extends sceneBase {
   maxSize = 4;
-  
   stars = [];
   maxStars = 12;
   
@@ -29,11 +28,13 @@ class sceneStars extends sceneBase {
   }
   
   draw() {
-    this.p.fillStyle = '#ffffff';
-      
+    this.p.fillStyle = "rgb(100, 100, 100)";
+    this.p.strokeStyle = "transparent";
+  
     this.stars.forEach((s,si) => {
       this.p.beginPath();
       this.p.arc(s.x, s.y, s.s, 0, Math.PI * 2);
+      this.p.closePath();
       this.p.fill();
       s.s += s.sd ? s.ss : -s.ss;
       if (s.s > s.sm) {
