@@ -10,22 +10,22 @@ const { pixelsToLEDs, fromRGBto32 } = require('./utils');
 const channel = ws281x(16 * 16 * 4, { stripType: 'ws2812', brightness: 10 });
 
 /* OLED DISPLAY */
-const i2cBus = i2c.openSync(1);
-const opts = {
-	width: 128,
-	height: 64,
-	address: 0x3C
-};
+// const i2cBus = i2c.openSync(1);
+// const opts = {
+// 	width: 128,
+// 	height: 64,
+// 	address: 0x3C
+// };
 
-const display = new oled(i2cBus, opts);
-try {
-  display.turnOnDisplay();
-  display.clearDisplay();
-  display.setCursor(1,1);
-  display.writeString(font, 1, 'STARTING UP...', 1, true);
-} catch (e) {
-  console.log('Wackelkontakt', e);
-}
+// const display = new oled(i2cBus, opts);
+// try {
+//   display.turnOnDisplay();
+//   display.clearDisplay();
+//   display.setCursor(1,1);
+//   display.writeString(font, 1, 'STARTING UP...', 1, true);
+// } catch (e) {
+//   console.log('Wackelkontakt', e);
+// }
 
 /* IMPORT SCENES */
 const sceneClasses = [
@@ -85,13 +85,13 @@ function nextScene() {
   if (currentScene >= scenes.length) {
     currentScene = 0;
   }
-  try {
-    display.clearDisplay();
-    display.setCursor(1,1);
-    display.writeString(font, 1, 'SCENE #'+ currentScene, 1, true);
-  } catch (e) {
-    console.log('Wackelkontakt', e);
-  }
+  // try {
+  //   display.clearDisplay();
+  //   display.setCursor(1,1);
+  //   display.writeString(font, 1, 'SCENE #'+ currentScene, 1, true);
+  // } catch (e) {
+  //   console.log('Wackelkontakt', e);
+  // }
 }
 
 ids.forEach((id, i) => {
