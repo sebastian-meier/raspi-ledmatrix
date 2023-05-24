@@ -20,7 +20,6 @@ const opts = {
 const display = new oled(i2cBus, opts);
 display.turnOnDisplay();
 display.clearDisplay();
-
 display.setCursor(1,1);
 display.writeString(font, 1, 'STARTING UP...', 1, true);
 
@@ -49,22 +48,30 @@ let modi = 'scenes';
 const buttons = [];
 const ids = [17,27,5,6];
 const callbacks = [
-	(level, tick) => { 
-    // PLAY
-    modi = 'scenes';
-    nextScene();
+	(level, tick) => {
+    if (level === 1) {
+      // PLAY
+      modi = 'scenes';
+      nextScene();
+    }
   },
 	(level, tick) => {
     // RIGHT
-    modi = 'right';
+    if (level === 1) {
+      modi = 'right';
+    }
   },
 	(level, tick) => {
     // LEFT
-    modi = 'left';
+    if (level === 1) {
+      modi = 'left';
+    }
   },
 	(level, tick) => {
     // STOP
-    modi = 'drive';
+    if (level === 1) {
+      modi = 'drive';
+    }
   }
 ];
 
@@ -74,6 +81,8 @@ function nextScene() {
   if (currentScene >= scenes.length) {
     currentScene = 0;
   }
+  display.clearDisplay();
+  display.setCursor(1,1);
   display.writeString(font, 1, 'SCENE #'+ currentScene, 1, true);
 }
 
