@@ -18,10 +18,14 @@ const opts = {
 };
 
 const display = new oled(i2cBus, opts);
-display.turnOnDisplay();
-display.clearDisplay();
-display.setCursor(1,1);
-display.writeString(font, 1, 'STARTING UP...', 1, true);
+try {
+  display.turnOnDisplay();
+  display.clearDisplay();
+  display.setCursor(1,1);
+  display.writeString(font, 1, 'STARTING UP...', 1, true);
+} catch (e) {
+  console.log('Wackelkontakt', e);
+}
 
 /* IMPORT SCENES */
 const sceneClasses = [
@@ -81,9 +85,13 @@ function nextScene() {
   if (currentScene >= scenes.length) {
     currentScene = 0;
   }
-  display.clearDisplay();
-  display.setCursor(1,1);
-  display.writeString(font, 1, 'SCENE #'+ currentScene, 1, true);
+  try {
+    display.clearDisplay();
+    display.setCursor(1,1);
+    display.writeString(font, 1, 'SCENE #'+ currentScene, 1, true);
+  } catch (e) {
+    console.log('Wackelkontakt', e);
+  }
 }
 
 ids.forEach((id, i) => {
