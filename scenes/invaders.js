@@ -47,100 +47,100 @@ class sceneInvaders extends sceneBase {
   }
 
   draw() {
-    switch (this.phase) {
-      case 0:
-        this.p.background(0);
-        this.p.noStroke();
-        this.p.fill(255);
-        for (let x = 0; x < this.canvasWidth; x += 1) {
-          for (let y = 0; y < this.canvasHeight; y += 1) {
-            if (Math.random() > this.probability) {
-              this.p.rect(x, y, 1, 1);
-            }
-          }
-        }
-        this.probability -= 0.001;
-        if (this.probability < 0.9) {
-          this.phase += 1;
-        }
-        break;
-      case 1:
-        this.p.background(0);
-        this.p.noStroke();
-        this.p.fill(255);
-        for (let x = 0; x < this.canvasWidth; x += 1) {
-          for (let y = 0; y < this.canvasHeight; y += 1) {
-            const id = x + y * this.canvasWidth;
-            if (this.values[id] || Math.random() > this.probability) {
-              this.p.rect(x, y, 1, 1);
-              if (!this.values[id] && this.images[this.imageId][0][id]) {
-                this.values[id] = true;
-                this.valueCount += 1;
-              }
-            }
-          }
-        }
-        if (this.valueCount >= this.images[this.imageId][2]) {
-          this.phase += 1;
-        }
-        break;
-      case 2:
-        this.p.background(0);
-        this.p.noStroke();
-        this.p.fill(255);
-        for (let x = 0; x < this.canvasWidth; x += 1) {
-          for (let y = 0; y < this.canvasHeight; y += 1) {
-            const id = x + y * this.canvasWidth;
-            if (this.images[this.imageId][this.animationId][id]) {
-              this.p.rect(x, y, 1, 1);
-            }
-          }
-        }
-        this.animationCount += 1;
-        if (this.animationCount > 25) {
-          this.animationCount = 0;
-          this.animationId += 1;
-          if (this.animationId > 1) {
-            this.animationId = 0;
-          }
-          this.animationLoops += 1;
-        }
-        if (this.animationLoops > 20) {
-          this.phase += 1;
-        }
-        break;
-      case 3:
-        this.p.background(0);
-        this.p.noStroke();
-        this.p.fill(255);
-        for (let x = 0; x < this.canvasWidth; x += 1) {
-          for (let y = 0; y < this.canvasHeight; y += 1) {
-            const id = x + y * this.canvasWidth;
-            const prob = Math.random();
-            if (this.values[id] || prob > this.probability) {
-              this.p.rect(x, y, 1, 1);
-              if (this.values[id] && prob > this.probability) {
-                this.values[id] = false;
-                this.valueCount -= 1;
-              }
-            }
-          }
-        }
-        if (this.valueCount === 0) {
-          this.phase += 1;
-        }
-        break;
-      case 4:
-        this.valueCount = 0;
-        this.animationCount = 0;
-        this.animationLoops = 0;
-        this.phase = 0;
-        this.imageId += 1;
-        if (this.imageId >= this.images.length) {
-          this.imageId = 0;
-        }
-        break;
-    }
+    // switch (this.phase) {
+    //   case 0:
+    //     this.p.background(0);
+    //     this.p.noStroke();
+    //     this.p.fill(255);
+    //     for (let x = 0; x < this.canvasWidth; x += 1) {
+    //       for (let y = 0; y < this.canvasHeight; y += 1) {
+    //         if (Math.random() > this.probability) {
+    //           this.p.rect(x, y, 1, 1);
+    //         }
+    //       }
+    //     }
+    //     this.probability -= 0.001;
+    //     if (this.probability < 0.9) {
+    //       this.phase += 1;
+    //     }
+    //     break;
+    //   case 1:
+    //     this.p.background(0);
+    //     this.p.noStroke();
+    //     this.p.fill(255);
+    //     for (let x = 0; x < this.canvasWidth; x += 1) {
+    //       for (let y = 0; y < this.canvasHeight; y += 1) {
+    //         const id = x + y * this.canvasWidth;
+    //         if (this.values[id] || Math.random() > this.probability) {
+    //           this.p.rect(x, y, 1, 1);
+    //           if (!this.values[id] && this.images[this.imageId][0][id]) {
+    //             this.values[id] = true;
+    //             this.valueCount += 1;
+    //           }
+    //         }
+    //       }
+    //     }
+    //     if (this.valueCount >= this.images[this.imageId][2]) {
+    //       this.phase += 1;
+    //     }
+    //     break;
+    //   case 2:
+    //     this.p.background(0);
+    //     this.p.noStroke();
+    //     this.p.fill(255);
+    //     for (let x = 0; x < this.canvasWidth; x += 1) {
+    //       for (let y = 0; y < this.canvasHeight; y += 1) {
+    //         const id = x + y * this.canvasWidth;
+    //         if (this.images[this.imageId][this.animationId][id]) {
+    //           this.p.rect(x, y, 1, 1);
+    //         }
+    //       }
+    //     }
+    //     this.animationCount += 1;
+    //     if (this.animationCount > 25) {
+    //       this.animationCount = 0;
+    //       this.animationId += 1;
+    //       if (this.animationId > 1) {
+    //         this.animationId = 0;
+    //       }
+    //       this.animationLoops += 1;
+    //     }
+    //     if (this.animationLoops > 20) {
+    //       this.phase += 1;
+    //     }
+    //     break;
+    //   case 3:
+    //     this.p.background(0);
+    //     this.p.noStroke();
+    //     this.p.fill(255);
+    //     for (let x = 0; x < this.canvasWidth; x += 1) {
+    //       for (let y = 0; y < this.canvasHeight; y += 1) {
+    //         const id = x + y * this.canvasWidth;
+    //         const prob = Math.random();
+    //         if (this.values[id] || prob > this.probability) {
+    //           this.p.rect(x, y, 1, 1);
+    //           if (this.values[id] && prob > this.probability) {
+    //             this.values[id] = false;
+    //             this.valueCount -= 1;
+    //           }
+    //         }
+    //       }
+    //     }
+    //     if (this.valueCount === 0) {
+    //       this.phase += 1;
+    //     }
+    //     break;
+    //   case 4:
+    //     this.valueCount = 0;
+    //     this.animationCount = 0;
+    //     this.animationLoops = 0;
+    //     this.phase = 0;
+    //     this.imageId += 1;
+    //     if (this.imageId >= this.images.length) {
+    //       this.imageId = 0;
+    //     }
+    //     break;
+    // }
   }
 }
 
