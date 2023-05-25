@@ -6,6 +6,8 @@ const font = require("oled-font-5x7");
 const Gpio = require("pigpio").Gpio;
 const { pixelsToLEDs, fromRGBto32 } = require('./utils');
 
+console.log("import complete");
+
 /* LED-MATRIX */
 const channel = ws281x(16 * 16 * 4, { stripType: 'ws2812', brightness: 10 });
 
@@ -53,6 +55,7 @@ const buttons = [];
 const ids = [17,27,5,6];
 const callbacks = [
 	(level, tick) => {
+    console.log(1,level,tick);
     if (level === 1) {
       // PLAY
       modi = 'scenes';
@@ -60,18 +63,21 @@ const callbacks = [
     }
   },
 	(level, tick) => {
+    console.log(2,level,tick);
     // RIGHT
     if (level === 1) {
       modi = 'right';
     }
   },
 	(level, tick) => {
+    console.log(3,level,tick);
     // LEFT
     if (level === 1) {
       modi = 'left';
     }
   },
 	(level, tick) => {
+    console.log(4,level,tick);
     // STOP
     if (level === 1) {
       modi = 'drive';
@@ -92,6 +98,7 @@ function nextScene() {
   // } catch (e) {
   //   console.log('Wackelkontakt', e);
   // }
+  console.log("nextScene", currentScene);
 }
 
 ids.forEach((id, i) => {
