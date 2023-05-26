@@ -35,9 +35,12 @@ class sceneRain extends sceneBase {
     const deletions = [];
 
     this.rains.forEach((r,ri) => {
-      for (let y = 0; Math.floor(r.y - y) >= 0 && y <= this.trail; y += 1) {
-        const rgb = 255/this.trail*(this.trail-y);
-        leds[xy2id(r.x, Math.floor(r.y - y))] = fromRGBto32(rgb, rgb, rgb);
+      for (let y = 0; y <= this.trail; y += 1) {
+        const ty = Math.floor(r.y - y);
+        if (ty >= 0 && ty < this.canvasHeight)  {
+          const rgb = 255/this.trail*(this.trail-y);
+          leds[xy2id(r.x, ty)] = fromRGBto32(rgb, rgb, rgb);
+        }
       }
       r.y += r.v;
       if (r.y - this.trail > this.canvasHeight) {
