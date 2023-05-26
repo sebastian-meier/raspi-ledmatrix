@@ -20,7 +20,7 @@ class sceneRain extends sceneBase {
     return {
       x,
       y: 0,
-      v: 0.25 + Math.random()/2
+      v: 0.35 + Math.random()/2
     };
   }
   
@@ -35,9 +35,9 @@ class sceneRain extends sceneBase {
     const deletions = [];
 
     this.rains.forEach((r,ri) => {
-      for (let y = 0; (r.y - y) >= 0 && y <= this.trail; y += 1) {
+      for (let y = 0; Math.floor(r.y - y) >= 0 && y <= this.trail; y += 1) {
         const rgb = 255/this.trail*(this.trail-y);
-        leds[xy2id(r.x, r.y - y)] = fromRGBto32(rgb, rgb, rgb)
+        leds[xy2id(r.x, Math.floor(r.y - y))] = fromRGBto32(rgb, rgb, rgb);
       }
       r.y += r.v;
       if (r.y - this.trail > this.canvasHeight) {
