@@ -145,7 +145,7 @@ class sceneInvaders extends sceneBase {
         }
         break;
     }
-    return leds;
+    return this.leds;
   }
 }
 
