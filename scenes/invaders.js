@@ -1,5 +1,5 @@
 const sceneBase = require('./base');
-const { xy2id } = require('../utils');
+const { xy2id, arrayToLEDs } = require('../utils');
 
 class sceneInvaders extends sceneBase {
   images = [
@@ -124,9 +124,9 @@ class sceneInvaders extends sceneBase {
           for (let y = 0; y < this.canvasHeight; y += 1) {
             const id = x + y * this.canvasWidth;
             const prob = Math.random();
-            if (this.tmpLeds[id] == white || prob > this.probability) {
+            if (this.tmpLeds[id] == this.white || prob > this.probability) {
               this.leds[id] = this.white;
-              if (this.tmpLeds[id] == white && prob > this.probability) {
+              if (this.tmpLeds[id] == this.white && prob > this.probability) {
                 this.tmpLeds[id] = this.black;
                 this.valueCount -= 1;
               }
@@ -145,7 +145,7 @@ class sceneInvaders extends sceneBase {
         }
         break;
     }
-    return this.leds;
+    return arrayToLEDs(this.leds);
   }
 }
 
