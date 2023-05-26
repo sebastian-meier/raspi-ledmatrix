@@ -61,7 +61,6 @@ class sceneInvaders extends sceneBase {
           this.tmpLeds.push(this.black);
         }
         this.phase += 1;
-        this.probability = 1;
         break;
       case 1:
         for (let x = 0; x < this.canvasWidth; x += 1) {
@@ -71,7 +70,7 @@ class sceneInvaders extends sceneBase {
             }
           }
         }
-        this.probability -= 0.0002;
+        this.probability -= 0.001;
         if (this.probability < 0.9) {
           this.phase += 1;
           this.valueCount = 0;

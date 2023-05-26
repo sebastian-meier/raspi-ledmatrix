@@ -9,7 +9,7 @@ const { pixelsToLEDs, fromRGBto32 } = require('./utils');
 console.log("import complete");
 
 /* LED-MATRIX */
-const channel = ws281x(16 * 16 * 4, { stripType: 'ws2812', brightness: 100 });
+const channel = ws281x(16 * 16 * 4, { stripType: 'ws2812', brightness: 10 });
 
 /* OLED DISPLAY */
 // const i2cBus = i2c.openSync(1);
