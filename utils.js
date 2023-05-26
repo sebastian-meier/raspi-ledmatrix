@@ -2,6 +2,20 @@ const fromRGBto32 = (r,g,b) => {
   return (r << 16) + (g << 8) + b;
 };
 
+const xy2id = (x, y) => {
+  const w = 32;
+  const h = 32;
+  return x + y * 32;
+};
+
+const id2xy = (id) => {
+  const w = 32;
+  const h = 32;
+  const y = Math.floor(id / w);
+  const x = id - y * w;
+  return {x, y};
+};
+
 const pixelsToLEDs = (p) => {
   // resolution x/y
   const rX = 32;
@@ -66,4 +80,4 @@ const pixelsToLEDs = (p) => {
   return matrices.flat();
 };
 
-module.exports = { fromRGBto32, pixelsToLEDs };
+module.exports = { fromRGBto32, pixelsToLEDs, id2xy, xy2id };

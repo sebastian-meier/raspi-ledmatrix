@@ -2,11 +2,11 @@ const sceneBase = require('./base');
 
 class sceneRain extends sceneBase {
   rains = [];
-  trail = 7;
+  trail = 5;
   
   addRains() {
     for (let i = 0; i < this.canvasWidth; i += 1) {
-      if (Math.random() > 0.99) {
+      if (Math.random() > 0.995) {
         this.rains.push(this.addRain(i));
       }
     }

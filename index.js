@@ -9,7 +9,7 @@ const { pixelsToLEDs, fromRGBto32 } = require('./utils');
 console.log("import complete");
 
 /* LED-MATRIX */
-const channel = ws281x(16 * 16 * 4, { stripType: 'ws2812', brightness: 10 });
+const channel = ws281x(16 * 16 * 4, { stripType: 'ws2812', brightness: 100 });
 
 /* OLED DISPLAY */
 // const i2cBus = i2c.openSync(1);
@@ -114,7 +114,6 @@ ids.forEach((id, i) => {
 
 const loopTime = 1000 * 60 * 5;
 let lastTime;
-let data;
 
 nextScene();
 
@@ -122,8 +121,10 @@ function update() {
   ctx.fillStyle = '#000000';
   ctx.fillRect(0, 0, 32, 32);
 
+  let leds = null;
+
   if (modi === 'scenes') {
-    scenes[currentScene].draw();
+    leds = scenes[currentScene].draw();
   } else if (modi === 'left') {
 
   } else if (modi === 'right') {
@@ -132,8 +133,10 @@ function update() {
 
   }
 
-  data = ctx.getImageData(0, 0, 32, 32);
-  let leds = pixelsToLEDs(data.data);
+  if (leds === null) {
+    const data = ctx.getImageData(0, 0, 32, 32);
+    leds = pixelsToLEDs(data.data);
+  }
 
   for (let a = 0; a < channel.array.length && a < leds.length; a++) {
     if (channel.array[a] != leds[a]) {
@@ -155,7 +158,7 @@ update();
 /* ON EXIT */
 function exitHandler(options, exitCode) {
   ws281x.finalize();
-  i2cBus.closeSync();
+  // i2cBus.closeSync();
   console.log(options.cleanup, options.exit, exitCode);
   process.exit();
 }
