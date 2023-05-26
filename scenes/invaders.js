@@ -57,7 +57,6 @@ class sceneInvaders extends sceneBase {
       case 0:
         this.leds = [];
         for (let i = 0; i < this.canvasHeight * this.canvasWidth; i += 1) {
-          this.leds.push(this.black);
           this.tmpLeds.push(this.black);
         }
         this.phase += 1;

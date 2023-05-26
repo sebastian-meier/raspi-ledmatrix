@@ -34,7 +34,7 @@ const sceneClasses = [
   require('./scenes/invaders'),
   require('./scenes/rain'),
   require('./scenes/stars'),
-  require('./scenes/lines')  
+  require('./scenes/noise')  
 ];
 const scenes = [];
 
