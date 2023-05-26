@@ -22,7 +22,7 @@ class sceneInvaders extends sceneBase {
     this.images.forEach(imageSet => {
       const set = [];
       imageSet.forEach(image => {
-        const count = 0;
+        let count = 0;
         image.forEach(i => {
           if (i) {
             count += 1;
