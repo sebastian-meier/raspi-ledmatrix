@@ -71,7 +71,7 @@ class sceneInvaders extends sceneBase {
             }
           }
         }
-        this.probability -= 0.001;
+        this.probability -= 0.0002;
         if (this.probability < 0.9) {
           this.phase += 1;
           this.valueCount = 0;
@@ -84,7 +84,7 @@ class sceneInvaders extends sceneBase {
             const id = x + y * this.canvasWidth;
             if (this.images[this.imageId][0][id] || Math.random() > this.probability) {
               this.leds[id] = this.white;
-              if (this.images[this.imageId][0][id] && this.tmpLeds[id] != white) {
+              if (this.images[this.imageId][0][id] && this.tmpLeds[id] != this.white) {
                 this.tmpLeds[id] = this.white;
                 this.valueCount += 1;
               }
