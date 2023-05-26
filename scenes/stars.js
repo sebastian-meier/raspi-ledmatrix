@@ -44,6 +44,7 @@ class sceneStars extends sceneBase {
         this.stars[si] = this.addStar();
       }
     });
+    return null;
   }
 }
 

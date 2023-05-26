@@ -42,6 +42,8 @@ class sceneRain extends sceneBase {
     for (let d = deletions.length - 1; d >= 0; d -= 1) {
       this.rains.splice(deletions[d], 1);
     }
+
+    return null;
   }
 }
 

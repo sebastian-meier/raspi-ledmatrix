@@ -32,6 +32,8 @@ class sceneLines extends sceneBase {
 
     this.rotation += this.rotSpeed;
     this.p.restore();
+
+    return null;
   }
 }
 
