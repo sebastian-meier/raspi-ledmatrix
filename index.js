@@ -138,9 +138,11 @@ function update() {
     leds = pixelsToLEDs(data.data);
   }
 
-  for (let a = 0; a < channel.array.length && a < leds.length; a++) {
-    if (channel.array[a] != leds[a]) {
-        channel.array[a] = leds[a];
+  if (channel && channel.array && leds) {
+    for (let a = 0; a < channel.array.length && a < leds.length; a++) {
+      if (channel.array[a] != leds[a]) {
+          channel.array[a] = leds[a];
+      }
     }
   }
   
